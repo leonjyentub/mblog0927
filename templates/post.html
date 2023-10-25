@@ -1,4 +1,5 @@
 {% extends "base2.html" %}
+{% load markdown_extras %}
 {% block title %} {{ post.title }} - 文學天地 {% endblock title %}
 {% block headmessage %} 
 <h3 style='font-family:微軟正黑體;'>{{ post.title }}</h3>
@@ -6,6 +7,6 @@
 {% endblock headmessage %} 
 {% block content %} 
 <p style='font-family:微軟正黑體;font-size:12pt;letter-spacing:2pt;'>
-    {{ post.body }}</a>
+    {{ post.body | convert_markdown | safe }}</a>
 </p>
 {% endblock content %}
