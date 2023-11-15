@@ -14,6 +14,20 @@ def showpost(request, slug):
     return render(request, 'post.html', locals())
     #select * from post where slug=%slug
     
+import random
+def about(request, num=-1):
+    if num == -1 or num > 3:
+        quotes = ['今日事，今日畢',
+                '要怎麼收穫，先那麼栽',
+                '知識就是力量',
+                '一個人的個性就是他的命運']
+        quote = random.choice(quotes)
+    else:
+        quotes = num
+    return render(request, 'about.html', locals())   
+
+
+
 '''
 def homepage(request):
     posts = Post.objects.all() #select * from post

@@ -22,4 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mv.homepage, name="homepage"),
     path('post/<slug:slug>/', mv.showpost, name="showpost"),
+    path('about/', mv.about),
+    path('about/<int:num>', mv.about)
 ]
