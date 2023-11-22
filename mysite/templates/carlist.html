@@ -6,14 +6,34 @@
 
 {% block content %} 
 <h2>歡迎光臨DJ二手車賣場</h2>
-<table class='table'>
+<table class='table table-bordered'>
     <tr>
     {% for m in car_maker %}
-        <td bgcolor="#ccffcc">
+        <td>
             <a href="{% url 'carlist-url' forloop.counter0 %}">{{m}}</a>
         </td>
     {% endfor %}
     </tr>
 </table>
+{% if cars %}
+<table class='table table-bordered'>
+    <tr><td>車廠</td><td>車款</td><td>車價</td></tr>
+{% endif %}
+
+{% load humanize %}
+
+{% for c in cars %}
+    <tr bgcolor="{% cycle '#eeeeee' '#cccccc' %}">
+        <td>{{maker_name}}</td>
+        <td>{{ c.model }}</td>
+        <td align='right'>NT${{ c.price | floatformat:2 | intcomma }}<td>
+    </tr>
+{% empty %}
+    <h3>車廠<em>{{maker_name}}</em>目前無庫存車</h3>
+{% endfor %}
+{% if cars %}
+</table>
+{% endif %}
+
 
 {% endblock content %}
