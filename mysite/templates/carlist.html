@@ -1,0 +1,19 @@
+{% extends "base2.html" %}
+{% block title %}歡迎光臨我的Cars{% endblock title %}
+{% block headmessage %} 
+<h3 style='font-family:標楷體;'>車子 - {{ maker_name }}</a> 
+{% endblock headmessage %} 
+
+{% block content %} 
+<h2>歡迎光臨DJ二手車賣場</h2>
+<table class='table'>
+    <tr>
+    {% for m in car_maker %}
+        <td bgcolor="#ccffcc">
+            <a href="{% url 'carlist-url' forloop.counter0 %}">{{m}}</a>
+        </td>
+    {% endfor %}
+    </tr>
+</table>
+
+{% endblock content %}
