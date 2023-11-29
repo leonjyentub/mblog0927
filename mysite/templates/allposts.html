@@ -12,12 +12,14 @@
         <th>Title</th>
         <th>SLUG</th>
         <th>pub data</th>
+        <th>檢視留言</th>
     </tr>
 {% endif %}
     <tr background='{% cycle "#ffccff" "#ccffcc" %}'>
         <td>{{ post.title }}</td>
         <td>{{ post.slug }}</td>
         <td>{{ post.pub_date }}</td>
+        <td><a href="{% url 'show-comments' post.id %}">view</a></td>
     </tr>
 {% if forloop.last %}
 </table>
