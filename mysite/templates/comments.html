@@ -1,0 +1,25 @@
+{% extends "base2.html" %}
+{% block title %}歡迎光臨我的部落格{% endblock title %}
+{% block headmessage %} 
+<h3 style='font-family:標楷體;'>文章回復- table版本</a> 
+{% endblock headmessage %} 
+{% block content %} 
+{% for c in comments %}
+{% if forloop.first %}
+<table>
+    <tr background="#cccccc">
+        <th>Text</th>
+        <th>pub data</th>
+    </tr>
+{% endif %}
+    <tr background='{% cycle "#ffccff" "#ccffcc" %}'>
+        <td>{{ c.text }}</td>
+        <td>{{ c.pub_date }}</td>
+    </tr>
+{% if forloop.last %}
+</table>
+{% endif %}
+{% empty %}
+<h2>沒有任何回復</h2>
+{% endfor %}
+{% endblock content %}
