@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage, name="homepage"),
     path('post/<slug:slug>/', views.showpost, name="showpost"),
+    path('post/', views.show_all_posts, name="show-all-posts"),
     path('about/', views.about),
     path('about/<int:num>', views.about, name='about'),
     path('carlist/', views.carlist),

@@ -11,6 +11,10 @@ def homepage(request):
     print(f'hour = {hour}')
     return render(request, 'index.html', locals())
     
+def show_all_posts(request):
+    posts = Post.objects.all()
+    return render(request, 'allposts.html', locals())
+
 def showpost(request, slug):
     post = Post.objects.get(slug=slug) 
     return render(request, 'post.html', locals())
