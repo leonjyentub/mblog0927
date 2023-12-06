@@ -72,6 +72,10 @@ def new_post(request):
     elif request.method == 'POST':
         username = request.POST['user_id']
         password = request.POST['password']
+        if username == 'ntub' and password == 'a123':
+            is_validated = True
+        else:
+            is_validated = False
         print(f'post-username:{username}, password:{password}')
         return render(request, 'myform_1.html', locals())
     '''

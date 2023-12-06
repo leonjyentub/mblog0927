@@ -5,7 +5,11 @@
 {% endblock headmessage %} 
 
 {% block content %}
-
+{% if is_validated %}
+<h2>登入成功</h2>
+{% else %}
+<h2>登入失敗</h2>
+{% endif %}
 <h2>HTML Forms</h2>
 <form action="" method="post">
     {% csrf_token %}
