@@ -64,3 +64,6 @@ def homepage(request):
         post_lists.append(f'No. {counter}-{post} <br>')
     return HttpResponse(post_lists)
 '''
+
+def new_post(request):
+    return render(request, 'myform_1.html', locals())
