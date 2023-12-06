@@ -5,18 +5,17 @@
 {% endblock headmessage %} 
 
 {% block content %}
-{% if is_validated %}
-<h2>登入成功</h2>
-{% else %}
-<h2>登入失敗</h2>
-{% endif %}
 <h2>HTML Forms</h2>
 <form action="" method="post">
     {% csrf_token %}
-  <label for="fname">帳號:</label><br>
-  <input type="text" id="user_id" name="user_id" value="ntub"><br>
-  <label for="lname">密碼:</label><br>
-  <input type="password" id="password" name="password"><br><br>
+  <label for="title">標題:</label><br>
+  <input type="text" id="title" name="title"><br>
+  <label for="slug">slug:</label><br>
+  <input type="text" id="slug" name="slug"><br>
+  <label for="content">內文:</label><br>
+  <textarea id='content' name='content' cols='30'>
+  </textarea>
+  <br>
   <input type="submit" value="送出">
 </form> 
 
