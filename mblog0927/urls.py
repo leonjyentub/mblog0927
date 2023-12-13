@@ -16,17 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from mysite import views
+from mysite import views as mv
+from mytest import views as testv
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.homepage, name="homepage"),
-    path('post/<slug:slug>/', views.showpost, name="showpost"),
-    path('post/', views.show_all_posts, name="show-all-posts"),
-    path('post/<int:post_id>/comments', views.show_comments, name='show-comments'),
-    path('about/', views.about),
-    path('about/<int:num>', views.about, name='about'),
-    path('carlist/', views.carlist),
-    path('carlist/<int:maker>/', views.carlist, name='carlist-url'),
-    path('post/new', views.new_post, name="post-new"),
+    path('', mv.homepage, name="homepage"),
+    path('post/<slug:slug>/', mv.showpost, name="showpost"),
+    path('post/', mv.show_all_posts, name="show-all-posts"),
+    path('post/<int:post_id>/comments', mv.show_comments, name='show-comments'),
+    path('about/', mv.about),
+    path('about/<int:num>', mv.about, name='about'),
+    path('carlist/', mv.carlist),
+    path('carlist/<int:maker>/', mv.carlist, name='carlist-url'),
+    path('post/new', mv.new_post, name="post-new"),
 ]

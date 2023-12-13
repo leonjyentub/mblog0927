@@ -1,0 +1,24 @@
+{% extends "base2.html" %}
+{% block title %} 表單輸入-2 {% endblock title %}
+{% block headmessage %} 
+{% endblock headmessage %} 
+
+{% block content %}
+<h2>HTML Forms</h2>
+<form action="" method="post">
+    {% csrf_token %}
+  <label for="title">標題:</label><br>
+  <input type="text" id="title" name="title"><br>
+  
+  <label for="title">類別:</label><br>
+  <input type="checkbox" id="tech" name="category" value="科技"></input>
+  <br>
+  <input type="text" id="slug" name="slug"><br>
+  <label for="content">內文:</label><br>
+  <textarea id='content' name='content' cols='30'>
+  </textarea>
+  <br>
+  <input type="submit" value="送出">
+</form> 
+
+{% endblock content %}
