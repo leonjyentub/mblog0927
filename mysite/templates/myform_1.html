@@ -10,6 +10,19 @@
     {% csrf_token %}
   <label for="title">標題:</label><br>
   <input type="text" id="title" name="title"><br>
+  
+  <label for="title">類別:</label><br>
+  <input type="checkbox" id="tech" name="category" value="科技"></input>
+  <label for="tech">科技</label>
+  <input type="checkbox" id="mood" name="category" value="心情"></input>
+  <label for="mood">心情</label>
+  <input type="checkbox" id="life" name="category" value="生活"></input>
+  <label for="life">生活</label>
+  <input type="checkbox" id="edu" name="category" value="教育"></input>
+  <label for="edu">教育</label>
+  <input type="checkbox" id="other" name="category" value="其他"></input>
+  <label for="other">其他</label>
+  <br>
   <label for="slug">slug:</label><br>
   <input type="text" id="slug" name="slug"><br>
   <label for="content">內文:</label><br>
