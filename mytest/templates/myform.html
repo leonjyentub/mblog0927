@@ -5,6 +5,11 @@
 
 {% block content %}
 <h2>HTML Forms</h2>
+{% if message %}
+    <div class='alert alert-warning'>
+         {{ message }}
+    </div>
+{% endif %}
 <form action="" method="post">
     {% csrf_token %}
   <label for="title">心情:</label><br>
@@ -12,19 +17,15 @@
   <input type='radio' name='mood' value='{{ m.status }}'>{{ m.status }}</input>
   {% endfor %}
   <br>
-
-
-  <input type="text" id="title" name="title"><br>
-  
-  <label for="title">類別:</label><br>
-  <input type="checkbox" id="tech" name="category" value="科技"></input>
-  <br>
-  <input type="text" id="slug" name="slug"><br>
-  <label for="content">內文:</label><br>
-  <textarea id='content' name='content' cols='30'>
-  </textarea>
-  <br>
-  <input type="submit" value="送出">
+  心情留言板：<br/>
+  <textarea name='user_post' rows=3 cols=70></textarea>
+  <br/>
+  <label for='user_id'>你的暱稱：</label>
+  <input id='user_id' type='text' name='user_id'>
+  <label for='user_pass'>張貼密碼：</label>
+  <input id='user_pass' type='password' name='user_pass'><br/>
+  <input type='submit' value='張貼'>
+  <input type='reset' value='清除重填'>
 </form> 
 
 {% endblock content %}
