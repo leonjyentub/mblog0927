@@ -7,7 +7,13 @@
 <h2>HTML Forms</h2>
 <form action="" method="post">
     {% csrf_token %}
-  <label for="title">標題:</label><br>
+  <label for="title">心情:</label><br>
+  {% for m in moods %}
+  <input type='radio' name='mood' value='{{ m.status }}'>{{ m.status }}</input>
+  {% endfor %}
+  <br>
+
+
   <input type="text" id="title" name="title"><br>
   
   <label for="title">類別:</label><br>
