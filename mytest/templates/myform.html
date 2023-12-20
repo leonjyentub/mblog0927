@@ -4,6 +4,16 @@
 {% endblock headmessage %} 
 
 {% block content %}
+<script>
+  function go_delete(id){
+      var user_pass = document.getElementById('user_pass').value;
+      if (user_pass != "") {
+          var usr = '/' + id + '/' + user_pass;
+          window.location = usr;
+      }
+  }
+  </script>
+  
 <h2>HTML Forms</h2>
 {% if message %}
     <div class='alert alert-warning'>
