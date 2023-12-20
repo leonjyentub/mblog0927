@@ -21,8 +21,11 @@
 {% endif %}
 <form action="" method="post">
     {% csrf_token %}
-  {{ form.as_p }}
+    <ul>
+  {{ form.as_ul }}
+    </ul>
   <input type='submit' value='張貼'>
   <input type='reset' value='清除重填'>
 </form> 
+
 {% endblock content %}

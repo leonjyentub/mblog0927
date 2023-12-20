@@ -22,7 +22,7 @@ def index(request):
         message = 'post/get 出現錯誤'
         return render(request, 'myform.html', locals())
     
-def delpost(pid): #delpost() got multiple values for argument 'pid'
+def delpost(request, pid): #delpost() got multiple values for argument 'pid'
     if pid:
         try:
             post = Post.objects.get(id=pid)
@@ -30,8 +30,21 @@ def delpost(pid): #delpost() got multiple values for argument 'pid'
         except:
             print('刪除錯誤!! pid=',pid)
             pass
-    return redirect('/')
+    return redirect("/test")
 
 def contact(request):
-    form = ContactForm()
-    return render(request, 'myContact.html', locals())
+    if request.method == 'GET':
+        form = ContactForm()
+        return render(request, 'myContact.html', locals())
+    elif request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            user_name = form.cleaned_data['user_name']
+            user_message = form.cleaned_data['user_message']
+            print('user_name:', user_name)
+            print('user_message:', user_message)
+        return render(request, 'myContact.html', locals())
+    else:
+        message = "ERROR"
+        return render(request, 'myContact.html', locals())
+    
