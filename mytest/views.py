@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from mytest.models import Post, Mood
+from mytest.forms import ContactForm
 
 # Create your views here.
 def index(request):
@@ -20,3 +21,17 @@ def index(request):
     else:
         message = 'post/get 出現錯誤'
         return render(request, 'myform.html', locals())
+    
+def delpost(pid): #delpost() got multiple values for argument 'pid'
+    if pid:
+        try:
+            post = Post.objects.get(id=pid)
+            post.delete()
+        except:
+            print('刪除錯誤!! pid=',pid)
+            pass
+    return redirect('/')
+
+def contact(request):
+    form = ContactForm()
+    return render(request, 'myContact.html', locals())
