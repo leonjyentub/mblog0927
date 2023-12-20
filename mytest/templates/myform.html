@@ -2,8 +2,6 @@
 {% block title %} 表單輸入-2 {% endblock title %}
 {% block headmessage %} 
 {% endblock headmessage %} 
-
-{% block content %}
 <script>
   function go_delete(id){
       var user_pass = document.getElementById('user_pass').value;
@@ -13,7 +11,8 @@
       }
   }
   </script>
-  
+{% block content %}
+ 
 <h2>HTML Forms</h2>
 {% if message %}
     <div class='alert alert-warning'>
