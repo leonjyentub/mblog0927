@@ -1,0 +1,23 @@
+{% extends "base2.html" %}
+{% block title %} 表單輸入-2 {% endblock title %}
+{% block headmessage %} 
+{% endblock headmessage %} 
+
+{% block content %}
+
+<h2>HTML Forms</h2>
+{% if message %}
+    <div class='alert alert-warning'>
+         {{ message }}
+    </div>
+{% endif %}
+<form action="" method="post">
+    {% csrf_token %}
+    <ul>
+  {{ form.as_ul }}
+    </ul>
+  <input type='submit' value='張貼'>
+  <input type='reset' value='清除重填'>
+</form> 
+
+{% endblock content %}

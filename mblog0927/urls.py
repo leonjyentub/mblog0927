@@ -32,5 +32,6 @@ urlpatterns = [
     path('post/new', mv.new_post, name="post-new"),
     path('test/', testv.index, name="test-new"),
     path('test/delpost/<int:pid>/', testv.delpost),
-    path('test/contact', testv.contact)
+    path('test/contact', testv.contact),
+    path('post2db/', testv.post2db),
 ]

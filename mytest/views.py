@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from mytest.models import Post, Mood
-from mytest.forms import ContactForm
+from mytest.forms import ContactForm, PostForm
 
 # Create your views here.
 def index(request):
@@ -47,4 +47,17 @@ def contact(request):
     else:
         message = "ERROR"
         return render(request, 'myContact.html', locals())
+    
+def post2db(request):
+    if request.method == 'GET':
+        form = PostForm()
+        return render(request, 'myPost2DB.html', locals())
+    elif request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return render(request, 'myPost2DB.html', locals())
+    else:
+        message = "ERROR"
+        return render(request, 'myPost2DB.html', locals())
     
