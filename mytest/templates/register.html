@@ -1,0 +1,23 @@
+{% extends "base2.html" %}
+{% block title %} 註冊帳號 {% endblock title %}
+{% block headmessage %} 
+{% endblock headmessage %} 
+
+{% block content %}
+
+<h2>註冊帳號</h2>
+{% if message %}
+    <div class='alert alert-warning'>
+         {{ message }}
+    </div>
+{% endif %}
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+  {{ form.as_table }}
+    </table>
+  <input type='submit' value='註冊'>
+  <input type='reset' value='清除重填'>
+</form> 
+
+{% endblock content %}

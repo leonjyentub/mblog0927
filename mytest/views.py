@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from mytest.models import Post, Mood
-from mytest.forms import ContactForm, PostForm
+from mytest.forms import ContactForm, PostForm, UserRegisterForm
 
 # Create your views here.
 def index(request):
@@ -56,8 +56,32 @@ def post2db(request):
         form = PostForm(request.POST)
         if form.is_valid():
             form.save()
+            form = PostForm()
+            message = f'成功儲存！請記得你的編輯密碼!，訊息需經審查後才會顯示。'
         return render(request, 'myPost2DB.html', locals())
     else:
         message = "ERROR"
         return render(request, 'myPost2DB.html', locals())
     
+from django.contrib.auth.models import User
+
+def register(request):
+    if request.method == 'GET':
+        form = UserRegisterForm()
+        return render(request, 'register.html', locals())
+    elif request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            user_name = form.cleaned_data['user_name']
+            user_email = form.cleaned_data['user_email']
+            user_password = form.cleaned_data['user_password']
+            user_password_confirm = form.cleaned_data['user_password_confirm']
+            if user_password == user_password_confirm:
+                user = User.objects.create_user(user_name, user_email, user_password)
+                message = f'註冊成功！'
+            else:
+                message = f'兩次密碼不一致！'    
+        return render(request, 'register.html', locals())
+    else:
+        message = "ERROR"
+        return render(request, 'register.html', locals())
