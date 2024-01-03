@@ -129,20 +129,24 @@ def profile(request):
             try:
                 user = User.objects.get(username=username)
                 userinfo = Profile.objects.get(user=user)
-                form = ProfileForm(userinfo)
+                form = ProfileForm(instance=userinfo)
             except:
                 form = ProfileForm()
         return render(request, 'userinfo.html', locals())
     elif request.method == 'POST':
-        form = ProfileForm(request.POST)
-        if form.is_valid():
-            username = request.user.username
-            user = User.objects.get(username=username)
+        username = request.user.username
+        user = User.objects.get(username=username)
+        try:
+            userinfo = Profile.objects.get(user=user)
+            form = ProfileForm(request.POST, instance=userinfo)
+            form.save()
+            message = f'成功更新個人資料！'
+        except:
+            form = ProfileForm(request.POST)
             userinfo = form.save(commit=False)
             userinfo.user = user
             userinfo.save()
-            message = f'成功儲存！請記得你的編輯密碼!，訊息需經審查後才會顯示。'
-        form = ProfileForm()
+            message = f'成功新增！'    
         return render(request, 'userinfo.html', locals())
     else:
         message = "ERROR"
