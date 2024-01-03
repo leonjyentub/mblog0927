@@ -136,9 +136,13 @@ def profile(request):
     elif request.method == 'POST':
         form = ProfileForm(request.POST)
         if form.is_valid():
-            form.save()
-            form = ProfileForm()
+            username = request.user.username
+            user = User.objects.get(username=username)
+            userinfo = form.save(commit=False)
+            userinfo.user = user
+            userinfo.save()
             message = f'成功儲存！請記得你的編輯密碼!，訊息需經審查後才會顯示。'
+        form = ProfileForm()
         return render(request, 'userinfo.html', locals())
     else:
         message = "ERROR"
