@@ -35,5 +35,6 @@ urlpatterns = [
     path('test/contact', testv.contact),
     path('post2db/', testv.post2db),
     path('register/', testv.register),
-    path('login/', testv.login)
+    path('login/', testv.login, name='login'),
+    path('profile/', testv.profile)
 ]

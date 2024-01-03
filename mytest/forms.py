@@ -38,3 +38,13 @@ class LoginForm(forms.Form):
     user_name = forms.CharField(label='您的帳號', max_length=50, initial='leonlin')
     user_password = forms.CharField(label='輸入密碼', widget=forms.PasswordInput)
     
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = models.Profile
+        fields = ['height', 'male', 'website']
+
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+        self.fields['height'].label = '身高'
+        self.fields['male'].label = '性別'
+        self.fields['website'].label = '個人網址'

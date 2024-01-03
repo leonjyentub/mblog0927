@@ -9,6 +9,11 @@ def homepage(request):
     now = datetime.now()
     hour = now.timetuple().tm_hour
     years = range(1960,2024)
+    print('request.user.is_authenticated')
+    if request.user.is_authenticated:
+        user_name = request.user.username
+    else:
+        user_name = '未登入'
     return render(request, 'index.html', locals())
     
 def show_all_posts(request):
